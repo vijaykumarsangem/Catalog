@@ -4,14 +4,10 @@ import com.vijay.category.model.Category;
 import com.vijay.category.model.Sales;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.groupingBy;
-
 public class Catalog {
 
-    public void buildCategories(){
+    public static Map<Integer, Double> buildCategories(){
         Sales s1=new Sales(1,1,1,10.0,10.0);
         Sales s2=new Sales(2,1,1,20.0,20.0);
         Sales s3=new Sales(3,1,2,30.0,30.0);
@@ -34,9 +30,9 @@ public class Catalog {
 //        Category c4 = new Category(4,"d",Arrays.asList(s4),130.0,10.0);
 //        Category c5 = new Category(5,"e",Arrays.asList(s5),140.0,10.0);
 //        Category c6 = new Category(6,"f",Arrays.asList(s6),150.0,10.0);
-//        List<Category> c= new ArrayList<>();
-//        c.add(c1);
-//        c.add(c2);
+        List<Category> c= new ArrayList<>();
+        c.add(c1);
+        c.add(c2);
 //        c.add(c3);
 //        c.add(c4);
 //        c.add(c5);
@@ -53,5 +49,6 @@ public class Catalog {
                 sales.stream().collect(Collectors.groupingBy(Sales::getLeafCategoryId,
                         Collectors.summingDouble(Sales::getAmount)));
         System.out.println(total);
+        return total;
 }
     }
